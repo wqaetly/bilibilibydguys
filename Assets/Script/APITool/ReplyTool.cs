@@ -64,11 +64,6 @@ namespace Script.APITool
 
                     currentPageIndex++;
                 }
-                
-                if (currentPageIndex > 3)
-                {
-                    hasArrivedLast = true;
-                }
             }
 
             List<string> luckyGuy = new List<string>();
