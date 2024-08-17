@@ -42,7 +42,7 @@ namespace Script.APITool
                 {
                     hasArrivedLast = true;
                     currentPageIndex--;
-                    GameEntry.GetInstance.AddItem($"中断拉取，拉取评论页{currentPageIndex}时出现异常：{response["message"]!}");
+                    GameEntry.GetInstance.AddItem($"中断拉取，拉取评论页{currentPageIndex}时发现已无更多评论可拉取，正式开始抽奖：{response["message"]!}");
                     Debug.LogError($"中断拉取，拉取评论页{currentPageIndex}时出现异常：{response["message"]!}");
                 }
                 else
@@ -154,7 +154,8 @@ namespace Script.APITool
             await File.WriteAllLinesAsync(replayInfoFilePath, logInfo);
 
             Debug.Log($"所有评论拉取完成，页数{currentPageIndex}，且已得出所有中奖用户");
-
+            GameEntry.GetInstance.AddItem($"日志文件已写入到本地的{replayInfoFilePath}下");
+            
             return 0;
         }
     }
